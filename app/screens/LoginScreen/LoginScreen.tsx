@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, Button, FlatList, Text, TextInput, View } from 'react-native';
-import { Board } from '../types/board';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, Alert } from 'react-native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LoginScreenProps } from '@/components/navigation/types/navigation';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-
-
-const HomeScreen = ({ navigation }: LoginScreenProps) => {
+const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,12 +19,13 @@ const HomeScreen = ({ navigation }: LoginScreenProps) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: 16 }}>
+    <View>
       <Text>Логин</Text>
       <TextInput placeholder="Email" value={email} onChangeText={setEmail} />
       <TextInput placeholder="Пароль" value={password} onChangeText={setPassword} secureTextEntry />
       <Button title="Войти" onPress={handleLogin} />
-    </SafeAreaView>
+    </View>
   );
-}
-export default HomeScreen
+};
+
+export default LoginScreen;
